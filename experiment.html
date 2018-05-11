@@ -13,50 +13,53 @@
 // Experiment parameters
 exposureRepeat = 4;
 
-// Array of stimulus
-var faces = [
-  'Stimulus/1.jpg',
-  'Stimulus/2.jpg',
-  'Stimulus/3.jpg',
-  'Stimulus/4.jpg',
-  'Stimulus/5.jpg',
-  'Stimulus/6.jpg',
-  'Stimulus/7.jpg',
-  'Stimulus/8.jpg',
-  'Stimulus/9.jpg',
-  'Stimulus/10.jpg',
-  'Stimulus/11.jpg',
-  'Stimulus/12.jpg',
-  'Stimulus/13.jpg',
-  'Stimulus/14.jpg',
-  'Stimulus/15.jpg',
-  'Stimulus/16.jpg',
-  'Stimulus/17.jpg',
-  'Stimulus/18.jpg',
-  'Stimulus/19.jpg',
-  'Stimulus/20.jpg',
-  'Stimulus/21.jpg',
-  'Stimulus/22.jpg',
-  'Stimulus/23.jpg',
-  'Stimulus/24.jpg',
-  'Stimulus/25.jpg',
-  'Stimulus/26.jpg',
-  'Stimulus/27.jpg',
-  'Stimulus/28.jpg',
-  'Stimulus/29.jpg',
-  'Stimulus/30.jpg',
-  'Stimulus/31.jpg',
-  'Stimulus/32.jpg',
-  'Stimulus/33.jpg',
-  'Stimulus/34.jpg',
-  'Stimulus/35.jpg',
-  'Stimulus/36.jpg',
-  'Stimulus/37.jpg',
-  'Stimulus/38.jpg',
-  'Stimulus/39.jpg',
-  'Stimulus/40.jpg'
+// Array of array of all faces to select for one condition
+var allFaces = [
+  [
+    'Stimulus/1.jpg',
+    'Stimulus/3.jpg',
+    'Stimulus/5.jpg',
+    'Stimulus/7.jpg',
+    'Stimulus/9.jpg',
+    'Stimulus/11.jpg',
+    'Stimulus/13.jpg',
+    'Stimulus/15.jpg',
+    'Stimulus/17.jpg',
+    'Stimulus/19.jpg',
+    'Stimulus/21.jpg',
+    'Stimulus/23.jpg',
+    'Stimulus/25.jpg',
+    'Stimulus/27.jpg',
+    'Stimulus/29.jpg',
+    'Stimulus/31.jpg',
+  ],
+  [
+    'Stimulus/2.jpg',
+    'Stimulus/4.jpg',
+    'Stimulus/6.jpg',
+    'Stimulus/8.jpg',
+    'Stimulus/10.jpg',
+    'Stimulus/12.jpg',
+    'Stimulus/14.jpg',
+    'Stimulus/16.jpg',
+    'Stimulus/18.jpg',
+    'Stimulus/20.jpg',
+    'Stimulus/22.jpg',
+    'Stimulus/24.jpg',
+    'Stimulus/26.jpg',
+    'Stimulus/28.jpg',
+    'Stimulus/30.jpg',
+    'Stimulus/32.jpg',
+  ]
 ];
 
+// Select counterbalance
+var counterbalance = ['A', 'B'];
+var counterbalanceIndex = Math.floor(Math.random() * counterbalance.length);
+counterbalance = counterbalance[counterbalanceIndex];
+var faces = allFaces[counterbalanceIndex];
+
+// Array of squares
 var squares = [
   'Stimulus/1-a.png',
   'Stimulus/1-b.png',
@@ -150,7 +153,7 @@ timeline.push({
 // RUN THE TIMELINE!
 jsPsych.init({
   timeline: timeline,
-  preload_images: faces.concat(squares)
+  preload_images: squares.concat(allFaces[0], allFaces[1])
 });
 
 </script>
