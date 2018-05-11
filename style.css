@@ -1,11 +1,17 @@
 #faceImg {
 	position: relative;
+	display: block;
 	z-index: 0;
+	max-height: 640px;
+	height: auto;
+	width: auto;
 }
 
 #squareImg {
 	position: absolute;
-	top: 0;
-	left: 0;
+	top: 50%;
+	left: 50%;
+	margin-left: -320px;
+	margin-top: -320px;
 	z-index: 1;
 }
