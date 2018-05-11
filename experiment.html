@@ -13,32 +13,7 @@
 <body></body>
 <script>
 // Array of stimulus
-var Stimulus = [
-  'Stimulus/1-a.png',
-  'Stimulus/1-b.png',
-  'Stimulus/1-c.png',
-  'Stimulus/1-d.png',
-  'Stimulus/1-e.png',
-  'Stimulus/2-a.png',
-  'Stimulus/2-b.png',
-  'Stimulus/2-c.png',
-  'Stimulus/2-d.png',
-  'Stimulus/2-e.png',
-  'Stimulus/3-a.png',
-  'Stimulus/3-b.png',
-  'Stimulus/3-c.png',
-  'Stimulus/3-d.png',
-  'Stimulus/3-e.png',
-  'Stimulus/4-a.png',
-  'Stimulus/4-b.png',
-  'Stimulus/4-c.png',
-  'Stimulus/4-d.png',
-  'Stimulus/4-e.png',
-  'Stimulus/5-a.png',
-  'Stimulus/5-b.png',
-  'Stimulus/5-c.png',
-  'Stimulus/5-d.png',
-  'Stimulus/5-e.png',
+var faces = [
   'Stimulus/1.jpg',
   'Stimulus/2.jpg',
   'Stimulus/3.jpg',
@@ -81,6 +56,34 @@ var Stimulus = [
   'Stimulus/40.jpg'
 ];
 
+var squares = [
+  'Stimulus/1-a.png',
+  'Stimulus/1-b.png',
+  'Stimulus/1-c.png',
+  'Stimulus/1-d.png',
+  'Stimulus/1-e.png',
+  'Stimulus/2-a.png',
+  'Stimulus/2-b.png',
+  'Stimulus/2-c.png',
+  'Stimulus/2-d.png',
+  'Stimulus/2-e.png',
+  'Stimulus/3-a.png',
+  'Stimulus/3-b.png',
+  'Stimulus/3-c.png',
+  'Stimulus/3-d.png',
+  'Stimulus/3-e.png',
+  'Stimulus/4-a.png',
+  'Stimulus/4-b.png',
+  'Stimulus/4-c.png',
+  'Stimulus/4-d.png',
+  'Stimulus/4-e.png',
+  'Stimulus/5-a.png',
+  'Stimulus/5-b.png',
+  'Stimulus/5-c.png',
+  'Stimulus/5-d.png',
+  'Stimulus/5-e.png'
+];
+
 // Start a blank timeline
 var timeline = [];
 
@@ -106,10 +109,23 @@ timeline.push({
   post_trial_gap: 1000
 });
 
+// Fixation exposure trial component
+var fixation = {
+  type: 'html_keyboard-response',
+  stimulus: '<p style="font-size: 48px;">+</p>',
+  choices: jsPsych.NO_KEYS,
+  trial_duration: 400
+};
+
+// Presentation exposure trial component
+var exposure = {
+  type: 'html_keyboard-response'
+};
+
 // RUN THE TIMELINE!
 jsPsych.init({
   timeline: timeline,
-  preload_images: Stimulus
+  preload_images: faces.concat(squares)
 });
 
 </script>
