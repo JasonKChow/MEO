@@ -53,12 +53,6 @@ var allFaces = [
   ]
 ];
 
-// Select counterbalance
-var counterbalance = ['A', 'B'];
-var counterbalanceIndex = Math.floor(Math.random() * counterbalance.length);
-counterbalance = counterbalance[counterbalanceIndex];
-var faces = allFaces[counterbalanceIndex];
-
 // Array of squares
 var squares = [
   'Stimulus/1-a.png',
@@ -87,6 +81,12 @@ var squares = [
   'Stimulus/5-d.png',
   'Stimulus/5-e.png'
 ];
+
+// Select counterbalance
+var counterbalance = ['A', 'B'];
+var counterbalanceIndex = Math.floor(Math.random() * counterbalance.length);
+counterbalance = counterbalance[counterbalanceIndex];
+var faces = allFaces[counterbalanceIndex];
 
 // Start a blank timeline
 var timeline = [];
