@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Rating Faces</title>
+  <script src="jspsych-6.0.2/jspsych.js"></script>
+  <script src="jspsych-6.0.2/plugins/jspsych-html-keyboard-response.js"></script>
+  <script src="jspsych-6.0.2/plugins/jspsych-image-keyboard-response.js"></script>
+  <script src="jspsych-6.0.2/plugins/jspsych-survey-multi-choice.js"></script>
+  <script src="jspsych-6.0.2/plugins/jspsych-instructions.js"></script>
+  <link href="jspsych-6.0.2/css/jspsych.css" rel="stylesheet" type="text/css"></link>
+  <link href="style.css" rel="stylesheet" type="text/css"></link>
+</head>
+<body></body>
+<script>
+// Array of stimulus
+var Stimulus = [
+  'Stimulus/1-a.png',
+  'Stimulus/1-b.png',
+  'Stimulus/1-c.png',
+  'Stimulus/1-d.png',
+  'Stimulus/1-e.png',
+  'Stimulus/2-a.png',
+  'Stimulus/2-b.png',
+  'Stimulus/2-c.png',
+  'Stimulus/2-d.png',
+  'Stimulus/2-e.png',
+  'Stimulus/3-a.png',
+  'Stimulus/3-b.png',
+  'Stimulus/3-c.png',
+  'Stimulus/3-d.png',
+  'Stimulus/3-e.png',
+  'Stimulus/4-a.png',
+  'Stimulus/4-b.png',
+  'Stimulus/4-c.png',
+  'Stimulus/4-d.png',
+  'Stimulus/4-e.png',
+  'Stimulus/5-a.png',
+  'Stimulus/5-b.png',
+  'Stimulus/5-c.png',
+  'Stimulus/5-d.png',
+  'Stimulus/5-e.png',
+  'Stimulus/1.jpg',
+  'Stimulus/2.jpg',
+  'Stimulus/3.jpg',
+  'Stimulus/4.jpg',
+  'Stimulus/5.jpg',
+  'Stimulus/6.jpg',
+  'Stimulus/7.jpg',
+  'Stimulus/8.jpg',
+  'Stimulus/9.jpg',
+  'Stimulus/10.jpg',
+  'Stimulus/11.jpg',
+  'Stimulus/12.jpg',
+  'Stimulus/13.jpg',
+  'Stimulus/14.jpg',
+  'Stimulus/15.jpg',
+  'Stimulus/16.jpg',
+  'Stimulus/17.jpg',
+  'Stimulus/18.jpg',
+  'Stimulus/19.jpg',
+  'Stimulus/20.jpg',
+  'Stimulus/21.jpg',
+  'Stimulus/22.jpg',
+  'Stimulus/23.jpg',
+  'Stimulus/24.jpg',
+  'Stimulus/25.jpg',
+  'Stimulus/26.jpg',
+  'Stimulus/27.jpg',
+  'Stimulus/28.jpg',
+  'Stimulus/29.jpg',
+  'Stimulus/30.jpg',
+  'Stimulus/31.jpg',
+  'Stimulus/32.jpg',
+  'Stimulus/33.jpg',
+  'Stimulus/34.jpg',
+  'Stimulus/35.jpg',
+  'Stimulus/36.jpg',
+  'Stimulus/37.jpg',
+  'Stimulus/38.jpg',
+  'Stimulus/39.jpg',
+  'Stimulus/40.jpg'
+];
+
+// Start a blank timeline
+var timeline = [];
+
+// Instruction pages
+var page1 = 'Welcome to the experiment!<br>\
+  You are going to see pictures of faces with blue squares on top of them.';
+var page2 = 'First you will see a cross then a picture of a face with blue\
+  squares on top. <br>\
+  Please count the number of blue squares.';
+var page3 = 'Response using the number keys for the number of squares you count\
+  Respond as soon as possible. <br>\
+  Press next for example trials when you are ready.'
+var page4 = 'EXAMPLE GOES HERE'
+var page5 = 'Please keep your eyes on the screen, respond as accurately and \
+  quickly as possible.<br>\
+  Press next when you are ready to begin the real task.'
+
+// Add an instruction block
+timeline.push({
+  type: 'instructions',
+  pages: [page1, page2, page3, page4, page5],
+  show_clickable_nav: true,
+  post_trial_gap: 1000
+});
+
+// RUN THE TIMELINE!
+jsPsych.init({
+  timeline: timeline,
+  preload_images: Stimulus
+});
+
+</script>
+</html>
