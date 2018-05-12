@@ -53,6 +53,18 @@ var allFaces = [
   ]
 ];
 
+// Array of example faces
+var exampleFaces = [
+  'Stimulus/33.jpg',
+  'Stimulus/34.jpg',
+  'Stimulus/35.jpg',
+  'Stimulus/36.jpg',
+  'Stimulus/37.jpg',
+  'Stimulus/38.jpg',
+  'Stimulus/39.jpg',
+  'Stimulus/40.jpg',
+];
+
 // Array of squares
 var squares = [
   'Stimulus/1-a.png',
@@ -92,14 +104,14 @@ var faces = allFaces[counterbalanceIndex];
 var timeline = [];
 
 // Instruction pages
-var page1 = 'Welcome to the experiment!<br>\
-  You are going to see pictures of faces with blue squares on top of them.';
-var page2 = 'First you will see a cross then a picture of a face with blue\
-  squares on top. <br>\
-  Please count the number of blue squares.';
-var page3 = 'Response using the number keys for the number of squares you count\
-  Respond as soon as possible. <br>\
-  Press next for example trials when you are ready.'
+var page1 = 'Welcome to the experiment!<br>' +
+  'You are going to see pictures of faces with blue squares on top of them.';
+var page2 = 'First you will see a cross then a picture of a face with blue' +
+  'squares on top. <br>' +
+  'Please count the number of blue squares.';
+var page3 = 'Response using the number keys for the number of squares you ' +
+  'count. Respond as soon as possible. <br>' +
+  'Press next for example trials when you are ready.'
 
 // Add an instruction block
 timeline.push({
@@ -153,9 +165,9 @@ timeline.push({
   ]
 });
 
-var page5 = 'Please keep your eyes on the screen, respond as accurately and \
-  quickly as possible.<br>\
-  Press next when you are ready to begin the real task.'
+var page5 = 'Please keep your eyes on the screen, respond as accurately and ' +
+  'quickly as possible.<br>' +
+  'Press next when you are ready to begin the real task.'
 
 // Add an post example instruction block
 timeline.push({
@@ -187,7 +199,7 @@ timeline.push({
 // RUN THE TIMELINE!
 jsPsych.init({
   timeline: timeline,
-  preload_images: squares.concat(allFaces[0], allFaces[1])
+  preload_images: squares.concat(allFaces[0], allFaces[1], exampleFaces)
 });
 
 </script>
