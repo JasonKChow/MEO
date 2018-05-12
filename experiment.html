@@ -212,6 +212,7 @@ timeline.push({
 // Presentation component of rating
 var rating = {
   type: 'html-keyboard-response',
+  prompt: 'Which face do you like better?',
   stimulus: jsPsych.timelineVariable('ratingString'),
   choies: [37, 39],
   trial_duration: 10000000, // NOTE: This is for CSS styling.
@@ -245,7 +246,7 @@ timeline.push({
 // RUN THE TIMELINE!
 jsPsych.init({
   timeline: timeline,
-  preload_images: squares.concat(allFaces[0], allFaces[1], exampleFaces)
+  preload_images: squares.concat(faces, novelFaces, exampleFaces)
 });
 
 </script>
