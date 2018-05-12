@@ -136,7 +136,10 @@ var presentation = {
   choices: ['1', '2', '3', '4', '5'],
   response_ends_trial: false,
   trial_duration: 100, // NOTE: This is lowered for testing, 1000
-  post_trial_gap: 120
+  post_trial_gap: 120,
+  data: {
+    tag: 'rating'
+  }
 };
 
 // Example presentation trial component
@@ -215,8 +218,11 @@ var rating = {
   prompt: '<p style="font-size: 30px;">Which face do you like better?</p>',
   stimulus: jsPsych.timelineVariable('ratingString'),
   choies: [37, 39],
-  trial_duration: 10000000, // NOTE: This is for CSS styling.
+  trial_duration: 1000,
   post_trial_gap: 500, // NOTE: Check on this timing
+  data: {
+    tag: 'rating'
+  }
 };
 
 // Build rating trials
@@ -229,8 +235,8 @@ for (i = 0; i < faces.length; i++) {
       + novelFaces[i] + '"/>', target: 'left'});
   } else { // Target right
     ratingTrials = ratingTrials.concat({ratingString:
-      '<img id="leftImg" src="' + faces[i] + '"/><img id ="rightImg" src="'
-      + novelFaces[i] + '"/>', target: 'right'});
+      '<img id="leftImg" src="' + novelFaces[i] + '"/><img id ="rightImg" src="'
+      + faces[i] + '"/>', target: 'right'});
   }
 }
 
