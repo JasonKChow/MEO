@@ -22,6 +22,7 @@
 	max-height: 480px;
 	height: auto;
 	width: auto;
+	margin-bottom: 50px;
 }
 
 #rightImg {
@@ -30,4 +31,5 @@
 	max-height: 480px;
 	height: auto;
 	width: auto;
+	margin-bottom: 50px;
 }
