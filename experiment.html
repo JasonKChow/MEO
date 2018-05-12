@@ -100,15 +100,11 @@ var page2 = 'First you will see a cross then a picture of a face with blue\
 var page3 = 'Response using the number keys for the number of squares you count\
   Respond as soon as possible. <br>\
   Press next for example trials when you are ready.'
-var page4 = 'EXAMPLE GOES HERE'
-var page5 = 'Please keep your eyes on the screen, respond as accurately and \
-  quickly as possible.<br>\
-  Press next when you are ready to begin the real task.'
 
 // Add an instruction block
 timeline.push({
   type: 'instructions',
-  pages: [page1, page2, page3, page4, page5],
+  pages: [page1, page2, page3],
   show_clickable_nav: true,
   post_trial_gap: 1000
 });
@@ -130,6 +126,44 @@ var presentation = {
   trial_duration: 1000,
   post_trial_gap: 1200
 };
+
+// Example presentation trial component
+
+var exPresentation = {
+  type: 'html-keyboard-response',
+  stimulus: jsPsych.timelineVariable('stimString'),
+  choices: ['1', '2', '3', '4', '5'],
+  response_ends_trial: false,
+  trial_duration: 1000,
+  post_trial_gap: 1200
+}
+
+// Add example exposure trials to timeline
+timeline.push({
+  timeline: [fixation, presentation],
+  timeline_variables: [
+    {stimString: '<img id="faceImg" src="Stimulus/33.jpg"/>' +
+      '<img id="squareImg" src="Stimulus/1-c.png"/>'},
+    {stimString: '<img id="faceImg" src="Stimulus/34.jpg"/>' +
+      '<img id="squareImg" src="Stimulus/3-a.png"/>'},
+    {stimString: '<img id="faceImg" src="Stimulus/35.jpg"/>' +
+      '<img id="squareImg" src="Stimulus/5-e.png"/>'},
+    {stimString: '<img id="faceImg" src="Stimulus/36.jpg"/>' +
+      '<img id="squareImg" src="Stimulus/4-d.png"/>'}
+  ]
+});
+
+var page5 = 'Please keep your eyes on the screen, respond as accurately and \
+  quickly as possible.<br>\
+  Press next when you are ready to begin the real task.'
+
+// Add an post example instruction block
+timeline.push({
+  type: 'instructions',
+  pages: [page5],
+  show_clickable_nav: true,
+  post_trial_gap: 1000
+});
 
 // Build exposure trials
 var exposureTrials = [];
