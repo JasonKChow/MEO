@@ -126,7 +126,7 @@ var fixation = {
   type: 'html-keyboard-response',
   stimulus: '<p style="font-size: 48px;">+</p>',
   choices: jsPsych.NO_KEYS,
-  trial_duration: 400
+  trial_duration: 100 // NOTE: This is lowered for testing purposes, 400
 };
 
 // Presentation exposure trial component
@@ -135,19 +135,18 @@ var presentation = {
   stimulus: jsPsych.timelineVariable('stimString'),
   choices: ['1', '2', '3', '4', '5'],
   response_ends_trial: false,
-  trial_duration: 1000,
-  post_trial_gap: 1200
+  trial_duration: 100, // NOTE: This is lowered for testing, 1000
+  post_trial_gap: 120
 };
 
 // Example presentation trial component
-
 var exPresentation = {
   type: 'html-keyboard-response',
   stimulus: jsPsych.timelineVariable('stimString'),
   choices: ['1', '2', '3', '4', '5'],
   response_ends_trial: false,
-  trial_duration: 1000,
-  post_trial_gap: 1200
+  trial_duration: 100, // NOTE: This is lowered for testing, 1000
+  post_trial_gap: 120
 }
 
 // Add example exposure trials to timeline
@@ -182,7 +181,7 @@ var exposureTrials = [];
 var i;
 var r;
 for (r = 0; r < exposureRepeat; r++) {
-  for (i = 0; i < faces.length - 8; i++) {
+  for (i = 0; i < faces.length; i++) {
     exposureTrials = exposureTrials.concat([{stimString:
       '<img id="faceImg" src="' + faces[i] + '"/><img id="squareImg" src="' +
       squares[Math.floor(Math.random() * squares.length)] + '"/>'}]
@@ -190,10 +189,24 @@ for (r = 0; r < exposureRepeat; r++) {
   }
 }
 
-// Add exposure trials to timeline
+// Add exposure trials to timeline in blocks
+for (i = 0; i < exposureRepeat; i++) {
+  timeline.push({
+    timeline: [fixation, presentation],
+    timeline_variables: exposureTrials.slice((faces.length * (i - 1),
+      faces.length * i)),
+    sample: {
+      type: 'without-replacement',
+    }
+  });
+}
+
+// Filler tasks
 timeline.push({
-  timeline: [fixation, presentation],
-  timeline_variables: exposureTrials
+  type: 'instructions',
+  pages: ['This is where filler would go.'],
+  show_clickable_nav: true,
+  post_trial_gap: 1000
 });
 
 // RUN THE TIMELINE!
