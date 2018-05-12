@@ -220,11 +220,16 @@ var rating = {
 
 // Build rating trials
 var ratingTrials = [];
+var novelFaces = allFaces[Math.abs(allFaces.indexOf(faces) - 1)];
 for (i = 0; i < faces.length; i++) {
-  if (i % 2 === 1) {
-
-  } else {
-
+  if (i % 2 === 1) { // Target left
+    ratingTrials = ratingTrials.concat({ratingString:
+      '<img id="leftImg" src="' + faces[i] + '"/><img id ="rightImg" src="'
+      + novelFaces[i] + '"/>', target: 'left'});
+  } else { // Target right
+    ratingTrials = ratingTrials.concat({ratingString:
+      '<img id="leftImg" src="' + faces[i] + '"/><img id ="rightImg" src="'
+      + novelFaces[i] + '"/>', target: 'right'});
   }
 }
 
