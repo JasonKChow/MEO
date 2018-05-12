@@ -185,16 +185,16 @@ for (r = 0; r < exposureRepeat; r++) {
     exposureTrials = exposureTrials.concat([{stimString:
       '<img id="faceImg" src="' + faces[i] + '"/><img id="squareImg" src="' +
       squares[Math.floor(Math.random() * squares.length)] + '"/>'}]
-    )
+    );
   }
 }
 
 // Add exposure trials to timeline in blocks
-for (i = 0; i < exposureRepeat; i++) {
+for (r = 0; r < exposureRepeat; r++) {
   timeline.push({
     timeline: [fixation, presentation],
-    timeline_variables: exposureTrials.slice((faces.length * (i - 1),
-      faces.length * i)),
+    timeline_variables: exposureTrials.slice((faces.length * (r - 1),
+      faces.length * r)),
     sample: {
       type: 'without-replacement',
     }
@@ -207,6 +207,34 @@ timeline.push({
   pages: ['This is where filler would go.'],
   show_clickable_nav: true,
   post_trial_gap: 1000
+});
+
+// Presentation component of rating
+var rating = {
+  type = 'html-keyboard-response',
+  stimulus: jsPsych.timelineVariable('ratingString'),
+  choies: [37, 39],
+  trial_duration: 1000,
+  post_trial_gap: 500, // NOTE: Check on this timing
+};
+
+// Build rating trials
+var ratingTrials = [];
+for (i = 0; i < faces.length; i++) {
+  if (i % 2 === 1) {
+
+  } else {
+
+  }
+}
+
+// Add rating trials to timeline
+timeline.push({
+  timeline: [rating],
+  timeline_variables: ratingTrials,
+  sample: {
+    type: 'without-replacement'
+  }
 });
 
 // RUN THE TIMELINE!
