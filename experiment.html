@@ -254,8 +254,11 @@ jsPsych.init({
   timeline: timeline,
   preload_images: squares.concat(faces, novelFaces, exampleFaces),
   on_finish: function() {
-    var data = jsPsych.data.get().filter([{tag: 'liking'}, {tag: 'rating'}])
-    data.displayData('csv');
+    jsPsych.data.addProperties({counterbalance: counterbalance});
+    var data = jsPsych.data.get().filter([{tag: 'liking'}, {tag: 'rating'}]);
+    data = data.ignore('internal_node_id');
+    data = data.ignore('trial_type').ignore('trial_index');
+    data.localSave('csv', 'test.csv')
   }
 });
 
