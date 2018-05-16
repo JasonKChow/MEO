@@ -210,7 +210,24 @@ timeline.push({
   type: 'instructions',
   pages: ['This is where filler would go.'],
   show_clickable_nav: true,
-  post_trial_gap: 1000
+  post_trial_gap: 1000,
+  on_trial_start: function() {
+    jsPsych.data.addProperties({fillerStart: jsPsych.totalTime()});
+  }
+});
+
+timeline.push({
+  type: 'instructions',
+  pages: ['Check Time'],
+  show_clickable_nav: true,
+  post_trial_gap: 1000,
+  on_trial_finish: function(data) {
+    var timestamp = jsPsych.data.get()
+    console.log()
+  },
+  data: {
+    tag: 'timestamp'
+  }
 });
 
 // Presentation component of rating
@@ -337,25 +354,25 @@ var shipley_correct = {
   'Q39': 'everyday'
 };
 
-// Add Shipley to timeline
-timeline.push({
-  timeline: [{
-    type: 'survey-multi-choice',
-    questions: shipley_questions
-  }],
-  on_finish: function(data) {
-    var responses = JSON.parse(data.responses);
-    var correctCount = 0;
-    for (var key in responses) {
-      if (responses.hasOwnProperty(key)) {
-          if (responses[key] === shipley_correct[key]) {
-            correctCount ++;
-          }
-      }
-    }
-    jsPsych.data.addProperties({shipley: correctCount});
-  }
-});
+// Add Shipley to timeline NOTE: Commented out for testing purposes
+// timeline.push({
+//   timeline: [{
+//     type: 'survey-multi-choice',
+//     questions: shipley_questions
+//   }],
+//   on_finish: function(data) {
+//     var responses = JSON.parse(data.responses);
+//     var correctCount = 0;
+//     for (var key in responses) {
+//       if (responses.hasOwnProperty(key)) {
+//           if (responses[key] === shipley_correct[key]) {
+//             correctCount ++;
+//           }
+//       }
+//     }
+//     jsPsych.data.addProperties({shipley: correctCount});
+//   }
+// });
 
 // RUN THE TIMELINE!
 jsPsych.init({
