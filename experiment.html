@@ -5,6 +5,7 @@
   <script src="jspsych-6.0.2/jspsych.js"></script>
   <script src="jspsych-6.0.2/plugins/jspsych-instructions.js"></script>
   <script src="jspsych-6.0.2/plugins/jspsych-html-keyboard-response.js"></script>
+  <script src="jspsych-6.0.2/plugins/jspsych-survey-multi-choice.js"></script>
   <link href="jspsych-6.0.2/css/jspsych.css" rel="stylesheet" type="text/css"></link>
   <link href="style.css" rel="stylesheet" type="text/css"></link>
 </head>
@@ -218,7 +219,7 @@ var rating = {
   prompt: '<p style="font-size: 30px;">Which face do you like better?</p>',
   stimulus: jsPsych.timelineVariable('ratingString'),
   choices: [37, 39],
-  trial_duration: 1000,
+  trial_duration: 100, // NOTE: Lowered for testing, normally 1000
   post_trial_gap: 500, // NOTE: Check on this timing
   data: {
     tag: 'rating'
@@ -246,6 +247,61 @@ timeline.push({
   timeline_variables: ratingTrials,
   sample: {
     type: 'without-replacement'
+  }
+});
+
+// Shipley trials
+var shipley_questions = [
+  {prompt: 'TALK', options: ['draw', 'eat', 'speak', 'sleep'], required: true, horizontal: true},
+  {prompt: 'COUCH', options: ['pin', 'eraser', 'sofa', 'glass'], required: true, horizontal: true},
+  {prompt: 'REMEMBER', options: ['swim', 'recall', 'number', 'plan'], required: true, horizontal: true},
+  {prompt: 'PARDON', options: ['forgive', 'pound', 'divide', 'crash'], required: true, horizontal: true},
+  {prompt: 'HIDEOUS', options: ['silvery', 'tilted', 'young', 'dreadful'], required: true, horizontal: true},
+  {prompt: 'MASSIVE', options: ['bright', 'large', 'speedy', 'low'], required: true, horizontal: true},
+  {prompt: 'PROBABLE', options: ['likely', 'portable', 'friendly', 'comprehensive'], required: true, horizontal: true},
+  {prompt: 'IMPOSTER', options: ['conductor', 'officer', 'book', 'pretender'], required: true, horizontal: true},
+  {prompt: 'FASCINATE', options: ['welcome', 'fix', 'stir', 'enchant'], required: true, horizontal: true},
+  {prompt: 'EVIDENT', options: ['green', 'obvious', 'skeptical', 'afraid'], required: true, horizontal: true},
+  {prompt: 'NARRATE', options: ['yield', 'buy', 'associate', 'tell'], required: true, horizontal: true},
+  {prompt: 'HAUL', options: ['respond', 'twist', 'pull', 'realize'], required: true, horizontal: true},
+  {prompt: 'HILARITY', options: ['laughter', 'speed', 'grace', 'malice'], required: true, horizontal: true},
+  {prompt: 'IGNORANT', options: ['red', 'sharp', 'uninformed', 'precise'], required: true, horizontal: true},
+  {prompt: 'CAPTION', options: ['drum', 'ballast', 'heading', 'ape'], required: true, horizontal: true},
+  {prompt: 'INDICATE', options: ['defy', 'excite', 'signify', 'bicker'], required: true, horizontal: true},
+  {prompt: 'SOLEMN', options: ['serious', 'satisfying', 'rough', 'tremendous'], required: true, horizontal: true},
+  {prompt: 'FORTIFY', options: ['submerge', 'strengthen', 'went', 'deaden'], required: true, horizontal: true},
+  {prompt: 'MERIT', options: ['deserve', 'distrust', 'fight', 'separate'], required: true, horizontal: true},
+  {prompt: 'RENOWN', options: ['length', 'head', 'fame', 'loyalty'], required: true, horizontal: true},
+  {prompt: 'FACILITATE', options: ['turn', 'help', 'strip', 'bewilder'], required: true, horizontal: true},
+  {prompt: 'AMULET', options: ['charm', 'orphan', 'dingo', 'pond'], required: true, horizontal: true},
+  {prompt: 'STERILE', options: ['barren', 'illegal', 'helpless', 'tart'], required: true, horizontal: true},
+  {prompt: 'CORDIAL', options: ['swift', 'muddy', 'leafy', 'affable'], required: true, horizontal: true},
+  {prompt: 'SQUANDER', options: ['tease', 'belittle', 'slice', 'waste'], required: true, horizontal: true},
+  {prompt: 'SERRATED', options: ['dried', 'notched', 'armed', 'blunt'], required: true, horizontal: true},
+  {prompt: 'PLAGIARIZE', options: ['maintain', 'intend', 'revoke', 'pilfer'], required: true, horizontal: true},
+  {prompt: 'ORIFICE', options: ['brush', 'hole', 'building', 'lute'], required: true, horizontal: true},
+  {prompt: 'PRISTINE', options: ['vain', 'sound', 'unspoiled', 'level'], required: true, horizontal: true},
+  {prompt: 'INNOCUOUS', options: ['powerful', 'pure', 'medicinal', 'harmless'], required: true, horizontal: true},
+  {prompt: 'JOCOSE', options: ['humorous', 'paltry', 'fervid', 'plain'], required: true, horizontal: true},
+  {prompt: 'RUE', options: ['deal', 'lament', 'dominate', 'cure'], required: true, horizontal: true},
+  {prompt: 'INEXORABLE', options: ['untidy', 'inviolable', 'relentless', 'sparse'], required: true, horizontal: true},
+  {prompt: 'DIVEST', options: ['dispossess', 'intrude', 'rally', 'pledge'], required: true, horizontal: true},
+  {prompt: 'MOLLIFY', options: ['mitigate', 'direct', 'pertain', 'abuse'], required: true, horizontal: true},
+  {prompt: 'QUERULOUS', options: ['maniacal', 'curious', 'devout', 'complaining'], required: true, horizontal: true},
+  {prompt: 'ABET', options: ['waken', 'ensue', 'incite', 'placate'], required: true, horizontal: true},
+  {prompt: 'DESUETUDE', options: ['disuse', 'remonstrance', 'corruption', 'inanity'], required: true, horizontal: true},
+  {prompt: 'PEREGRINATE', options: ['contemplate', 'mince', 'solidify', 'traverse'], required: true, horizontal: true},
+  {prompt: 'QUOTIDIAN', options: ['travesty', 'everyday', 'calculation', 'promise'], required: true, horizontal: true}
+];
+
+// Add Shipley to timeline
+timeline.push({
+  timeline: [{
+    type: 'survey-multi-choice',
+    questions: shipley_questions
+  }],
+  on_finish: function() {
+    // Mark shipley here and add to data.
   }
 });
 
