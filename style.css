@@ -42,3 +42,39 @@
 label.jspsych-survey-multi-choice-text {
 	float: right;
 }
+
+#jspsych-serial-reaction-time-stimulus-cell-0-0:before {
+	content: "q";
+}
+
+#jspsych-serial-reaction-time-stimulus-cell-0-1:before {
+	content: "w";
+}
+
+#jspsych-serial-reaction-time-stimulus-cell-0-2:before {
+	content: "e";
+}
+
+#jspsych-serial-reaction-time-stimulus-cell-1-0:before {
+	content: "a";
+}
+
+#jspsych-serial-reaction-time-stimulus-cell-1-1:before {
+	content: "s";
+}
+
+#jspsych-serial-reaction-time-stimulus-cell-1-2:before {
+	content: "d";
+}
+
+#jspsych-serial-reaction-time-stimulus-cell-2-0:before {
+	content: "z";
+}
+
+#jspsych-serial-reaction-time-stimulus-cell-2-1:before {
+	content: "x";
+}
+
+#jspsych-serial-reaction-time-stimulus-cell-2-2:before {
+	content: "c";
+}

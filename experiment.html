@@ -6,6 +6,7 @@
   <script src="jspsych-6.0.2/plugins/jspsych-instructions.js"></script>
   <script src="jspsych-6.0.2/plugins/jspsych-html-keyboard-response.js"></script>
   <script src="jspsych-6.0.2/plugins/jspsych-survey-multi-choice.js"></script>
+  <script src="jspsych-6.0.2/plugins/jspsych-serial-reaction-time.js"></script>
   <link href="jspsych-6.0.2/css/jspsych.css" rel="stylesheet" type="text/css"></link>
   <link href="style.css" rel="stylesheet" type="text/css"></link>
 </head>
@@ -127,7 +128,7 @@ var fixation = {
   type: 'html-keyboard-response',
   stimulus: '<p style="font-size: 48px;">+</p>',
   choices: jsPsych.NO_KEYS,
-  trial_duration: 100 // NOTE: This is lowered for testing purposes, 400
+  trial_duration: 10 // NOTE: This is lowered for testing purposes, 400
 };
 
 // Presentation exposure trial component
@@ -136,8 +137,8 @@ var presentation = {
   stimulus: jsPsych.timelineVariable('stimString'),
   choices: ['1', '2', '3', '4', '5'],
   response_ends_trial: false,
-  trial_duration: 100, // NOTE: This is lowered for testing, 1000
-  post_trial_gap: 120,
+  trial_duration: 10, // NOTE: This is lowered for testing, 1000
+  post_trial_gap: 10, // NOTE: This is lowered for testing, 120
   data: {
     tag: 'liking'
   }
@@ -149,8 +150,8 @@ var exPresentation = {
   stimulus: jsPsych.timelineVariable('stimString'),
   choices: ['1', '2', '3', '4', '5'],
   response_ends_trial: false,
-  trial_duration: 100, // NOTE: This is lowered for testing, 1000
-  post_trial_gap: 120
+  trial_duration: 10, // NOTE: This is lowered for testing, 1000
+  post_trial_gap: 10 // NOTE: This is lowered for testing, 120
 }
 
 // Add example exposure trials to timeline
@@ -222,6 +223,47 @@ timeline.push({
 });
 
 // 15 minute in milliseconds is 900000
+
+// Serial reaction time component
+var srtFiller = {
+  type: 'serial-reaction-time',
+  grid: [
+    [1, 1, 1],
+    [1, 1, 1],
+    [1, 1, 1]
+  ],
+  target: function() {
+    var targets = [
+      [0, 0], [0, 1], [0, 2],
+      [1, 0], [1, 1], [1, 2],
+      [2, 0], [2, 1], [2, 2]
+    ];
+    return targets[Math.floor(Math.random() * targets.length)];
+  },
+  choices: [
+    ['q', 'w', 'e'],
+    ['a', 's', 'd'],
+    ['z', 'x', 'c']
+  ],
+  show_response_feedback: true,
+  pre_target_duration: 750,
+  trial_duration: 3000,
+  feedback_duration: 1000
+};
+
+// Add a loop of serial reaction time filler to timeline
+timeline.push({
+  timeline: [srtFiller],
+  loop_function: function(data) {
+    var fillerStart = jsPsych.data.get().filter({tag: 'timestamp'})
+    fillerStart = fillerStart.select('timestamp').values[0]
+    if (jsPsych.totalTime() > fillerStart + 900000) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+});
 
 // Presentation component of rating
 var rating = {
