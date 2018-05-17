@@ -205,30 +205,23 @@ for (r = 0; r < exposureRepeat; r++) {
   });
 }
 
-// Filler tasks
+// Push a timestamp trial
 timeline.push({
-  type: 'instructions',
-  pages: ['This is where filler would go.'],
-  show_clickable_nav: true,
-  post_trial_gap: 1000,
-  on_trial_start: function() {
-    jsPsych.data.addProperties({fillerStart: jsPsych.totalTime()});
-  }
+  timeline: [{
+    type: 'html-keyboard-response',
+    stimulus: 'Section complete!',
+    choices: jsPsych.NO_KEYS,
+    trial_duration: 1000,
+    on_finish: function(data) {
+      data.timestamp = jsPsych.totalTime();
+    },
+    data: {
+      tag: 'timestamp'
+    }
+  }]
 });
 
-timeline.push({
-  type: 'instructions',
-  pages: ['Check Time'],
-  show_clickable_nav: true,
-  post_trial_gap: 1000,
-  on_trial_finish: function(data) {
-    var timestamp = jsPsych.data.get()
-    console.log()
-  },
-  data: {
-    tag: 'timestamp'
-  }
-});
+// 15 minute in milliseconds is 900000
 
 // Presentation component of rating
 var rating = {
