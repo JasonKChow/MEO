@@ -7,6 +7,7 @@
   <script src="jspsych-6.0.2/plugins/jspsych-html-keyboard-response.js"></script>
   <script src="jspsych-6.0.2/plugins/jspsych-survey-multi-choice.js"></script>
   <script src="jspsych-6.0.2/plugins/jspsych-serial-reaction-time.js"></script>
+  <script src="jspsych-6.0.2/plugins/jspsych-visual-search-circle.js"></script>
   <link href="jspsych-6.0.2/css/jspsych.css" rel="stylesheet" type="text/css"></link>
   <link href="style.css" rel="stylesheet" type="text/css"></link>
 </head>
@@ -224,7 +225,36 @@ timeline.push({
 
 // 15 minute in milliseconds is 900000
 
-// Serial reaction time component
+// Visual search filler component
+var visualSearchFiller = {
+  type: 'visual-search-circle',
+  target_present: function() {
+    var bools = [true, false];
+    return bools[Math.floor(Math.random() * bools.length)];
+  },
+  set_size: 12,
+  fixation_size: [50, 50],
+  target_present_key: 49,
+  target_absent_key: 53,
+  target: 'Stimulus/flippedN.png',
+  foil: 'Stimulus/normalN.png',
+  fixation_image: 'Stimulus/Fixation.png'
+};
+
+timeline.push({
+  timeline: [visualSearchFiller],
+  loop_function: function(data) {
+    var fillerStart = jsPsych.data.get().filter({tag: 'timestamp'})
+    fillerStart = fillerStart.select('timestamp').values[0]
+    if (jsPsych.totalTime() > fillerStart + 900000) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+});
+
+// Serial reaction time filler component
 var srtFiller = {
   type: 'serial-reaction-time',
   grid: [
