@@ -334,6 +334,16 @@ timeline.push({
 
 // 15 minute in milliseconds is 900000
 
+// Add an post example instruction block
+timeline.push({
+  type: 'instructions',
+  pages: ['You are looking for a reversed N on each trial. If you see a' +
+    'reversed N, press the 1 key. If you do not see the reversed N, ' +
+    'press the 5 key. You are to complete 150 trials.'],
+  show_clickable_nav: true,
+  post_trial_gap: 1000
+});
+
 // Visual search filler component
 var visualSearchFiller = {
   type: 'visual-search-circle',
@@ -360,12 +370,21 @@ timeline.push({
     var lastNode = jsPsych.data.getLastTimelineData().select('internal_node_id');
     lastNode = parseInt(lastNode.values[0].split('-')[2].split('.')[1]);
 
-    if (jsPsych.totalTime() > fillerStart + 900000 || lastNode > 150) {
+    if (jsPsych.totalTime() > fillerStart + 900000 || lastNode > 1) {
       return false;
     } else {
       return true;
     }
   }
+});
+
+timeline.push({
+  type: 'instructions',
+  pages: ['You will be shown a grid of boxes with letters. One box will' +
+    'change, press the corresponding letter on your keyboard as quickly as' +
+    ' possible. You are to complete 150 trials.'],
+  show_clickable_nav: true,
+  post_trial_gap: 1000
 });
 
 // Serial reaction time filler component
