@@ -78,3 +78,7 @@ label.jspsych-survey-multi-choice-text {
 #jspsych-serial-reaction-time-stimulus-cell-2-2:before {
 	content: "c";
 }
+
+.jspsych-survey-multi-choice-preamble {
+	margin-top: 2em;
+}
