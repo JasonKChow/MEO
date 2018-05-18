@@ -370,7 +370,7 @@ timeline.push({
     var lastNode = jsPsych.data.getLastTimelineData().select('internal_node_id');
     lastNode = parseInt(lastNode.values[0].split('-')[2].split('.')[1]);
 
-    if (jsPsych.totalTime() > fillerStart + 900000 || lastNode > 1) {
+    if (jsPsych.totalTime() > fillerStart + 900000 || lastNode >= 149) {
       return false;
     } else {
       return true;
@@ -424,7 +424,7 @@ timeline.push({
     var lastNode = jsPsych.data.getLastTimelineData().select('internal_node_id');
     lastNode = parseInt(lastNode.values[0].split('-')[2].split('.')[1]);
 
-    if (jsPsych.totalTime() > fillerStart + 900000 || lastNode > 150) {
+    if (jsPsych.totalTime() > fillerStart + 900000 || lastNode >= 149) {
       return false;
     } else {
       return true;
