@@ -347,7 +347,8 @@ var visualSearchFiller = {
   target_absent_key: 53,
   target: 'Stimulus/flippedN.png',
   foil: 'Stimulus/normalN.png',
-  fixation_image: 'Stimulus/Fixation.png'
+  fixation_image: 'Stimulus/Fixation.png',
+  trial_duration: 1500
 };
 
 timeline.push({
@@ -359,7 +360,7 @@ timeline.push({
     var lastNode = jsPsych.data.getLastTimelineData().select('internal_node_id');
     lastNode = parseInt(lastNode.values[0].split('-')[2].split('.')[1]);
 
-    if (jsPsych.totalTime() > fillerStart + 900000 ||lastNode > 10) {
+    if (jsPsych.totalTime() > fillerStart + 900000 || lastNode > 150) {
       return false;
     } else {
       return true;
@@ -400,7 +401,11 @@ timeline.push({
   loop_function: function(data) {
     var fillerStart = jsPsych.data.get().filter({tag: 'timestamp'})
     fillerStart = fillerStart.select('timestamp').values[0]
-    if (jsPsych.totalTime() > fillerStart + 900000) {
+
+    var lastNode = jsPsych.data.getLastTimelineData().select('internal_node_id');
+    lastNode = parseInt(lastNode.values[0].split('-')[2].split('.')[1]);
+
+    if (jsPsych.totalTime() > fillerStart + 900000 || lastNode > 150) {
       return false;
     } else {
       return true;
