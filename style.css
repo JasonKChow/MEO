@@ -23,6 +23,7 @@
 	height: auto;
 	width: auto;
 	margin-bottom: 50px;
+	margin-right: 12px;
 }
 
 #rightImg {
@@ -32,6 +33,7 @@
 	height: auto;
 	width: auto;
 	margin-bottom: 50px;
+	margin-left: 12px;
 }
 
 .jspsych-survey-multi-choice-text {
