@@ -223,114 +223,114 @@ timeline.push({
   }]
 });
 
-// Shipley trials
-var shipley_questions = [
-  {prompt: 'TALK', options: ['draw', 'eat', 'speak', 'sleep'], required: true, horizontal: true},
-  {prompt: 'COUCH', options: ['pin', 'eraser', 'sofa', 'glass'], required: true, horizontal: true},
-  {prompt: 'REMEMBER', options: ['swim', 'recall', 'number', 'plan'], required: true, horizontal: true},
-  {prompt: 'PARDON', options: ['forgive', 'pound', 'divide', 'crash'], required: true, horizontal: true},
-  {prompt: 'HIDEOUS', options: ['silvery', 'tilted', 'young', 'dreadful'], required: true, horizontal: true},
-  {prompt: 'MASSIVE', options: ['bright', 'large', 'speedy', 'low'], required: true, horizontal: true},
-  {prompt: 'PROBABLE', options: ['likely', 'portable', 'friendly', 'comprehensive'], required: true, horizontal: true},
-  {prompt: 'IMPOSTER', options: ['conductor', 'officer', 'book', 'pretender'], required: true, horizontal: true},
-  {prompt: 'FASCINATE', options: ['welcome', 'fix', 'stir', 'enchant'], required: true, horizontal: true},
-  {prompt: 'EVIDENT', options: ['green', 'obvious', 'skeptical', 'afraid'], required: true, horizontal: true},
-  {prompt: 'NARRATE', options: ['yield', 'buy', 'associate', 'tell'], required: true, horizontal: true},
-  {prompt: 'HAUL', options: ['respond', 'twist', 'pull', 'realize'], required: true, horizontal: true},
-  {prompt: 'HILARITY', options: ['laughter', 'speed', 'grace', 'malice'], required: true, horizontal: true},
-  {prompt: 'IGNORANT', options: ['red', 'sharp', 'uninformed', 'precise'], required: true, horizontal: true},
-  {prompt: 'CAPTION', options: ['drum', 'ballast', 'heading', 'ape'], required: true, horizontal: true},
-  {prompt: 'INDICATE', options: ['defy', 'excite', 'signify', 'bicker'], required: true, horizontal: true},
-  {prompt: 'SOLEMN', options: ['serious', 'satisfying', 'rough', 'tremendous'], required: true, horizontal: true},
-  {prompt: 'FORTIFY', options: ['submerge', 'strengthen', 'went', 'deaden'], required: true, horizontal: true},
-  {prompt: 'MERIT', options: ['deserve', 'distrust', 'fight', 'separate'], required: true, horizontal: true},
-  {prompt: 'RENOWN', options: ['length', 'head', 'fame', 'loyalty'], required: true, horizontal: true},
-  {prompt: 'FACILITATE', options: ['turn', 'help', 'strip', 'bewilder'], required: true, horizontal: true},
-  {prompt: 'AMULET', options: ['charm', 'orphan', 'dingo', 'pond'], required: true, horizontal: true},
-  {prompt: 'STERILE', options: ['barren', 'illegal', 'helpless', 'tart'], required: true, horizontal: true},
-  {prompt: 'CORDIAL', options: ['swift', 'muddy', 'leafy', 'affable'], required: true, horizontal: true},
-  {prompt: 'SQUANDER', options: ['tease', 'belittle', 'slice', 'waste'], required: true, horizontal: true},
-  {prompt: 'SERRATED', options: ['dried', 'notched', 'armed', 'blunt'], required: true, horizontal: true},
-  {prompt: 'PLAGIARIZE', options: ['maintain', 'intend', 'revoke', 'pilfer'], required: true, horizontal: true},
-  {prompt: 'ORIFICE', options: ['brush', 'hole', 'building', 'lute'], required: true, horizontal: true},
-  {prompt: 'PRISTINE', options: ['vain', 'sound', 'unspoiled', 'level'], required: true, horizontal: true},
-  {prompt: 'INNOCUOUS', options: ['powerful', 'pure', 'medicinal', 'harmless'], required: true, horizontal: true},
-  {prompt: 'JOCOSE', options: ['humorous', 'paltry', 'fervid', 'plain'], required: true, horizontal: true},
-  {prompt: 'RUE', options: ['deal', 'lament', 'dominate', 'cure'], required: true, horizontal: true},
-  {prompt: 'INEXORABLE', options: ['untidy', 'inviolable', 'relentless', 'sparse'], required: true, horizontal: true},
-  {prompt: 'DIVEST', options: ['dispossess', 'intrude', 'rally', 'pledge'], required: true, horizontal: true},
-  {prompt: 'MOLLIFY', options: ['mitigate', 'direct', 'pertain', 'abuse'], required: true, horizontal: true},
-  {prompt: 'QUERULOUS', options: ['maniacal', 'curious', 'devout', 'complaining'], required: true, horizontal: true},
-  {prompt: 'ABET', options: ['waken', 'ensue', 'incite', 'placate'], required: true, horizontal: true},
-  {prompt: 'DESUETUDE', options: ['disuse', 'remonstrance', 'corruption', 'inanity'], required: true, horizontal: true},
-  {prompt: 'PEREGRINATE', options: ['contemplate', 'mince', 'solidify', 'traverse'], required: true, horizontal: true},
-  {prompt: 'QUOTIDIAN', options: ['travesty', 'everyday', 'calculation', 'promise'], required: true, horizontal: true}
-];
-
-var shipley_correct = {
-  'Q0': 'speak',
-  'Q1': 'sofa',
-  'Q2': 'recall',
-  'Q3': 'forgive',
-  'Q4': 'dreadful',
-  'Q5': 'large',
-  'Q6': 'likely',
-  'Q7': 'pretender',
-  'Q8': 'enchant',
-  'Q9': 'obvious',
-  'Q10': 'tell',
-  'Q11': 'pull',
-  'Q12': 'laughter',
-  'Q13': 'uninformed',
-  'Q14': 'heading',
-  'Q15': 'signify',
-  'Q16': 'serious',
-  'Q17': 'strengthen',
-  'Q18': 'deserve',
-  'Q19': 'fame',
-  'Q20': 'help',
-  'Q21': 'charm',
-  'Q22': 'barren',
-  'Q23': 'affable',
-  'Q24': 'waste',
-  'Q25': 'notched',
-  'Q26': 'pilfer',
-  'Q27': 'hole',
-  'Q28': 'unspoiled',
-  'Q29': 'harmless',
-  'Q30': 'humorous',
-  'Q31': 'lament',
-  'Q32': 'relentless',
-  'Q33': 'dispossess',
-  'Q34': 'mitigate',
-  'Q35': 'complaining',
-  'Q36': 'incite',
-  'Q37': 'disuse',
-  'Q38': 'traverse',
-  'Q39': 'everyday'
-};
-
-// Add Shipley to timeline
-timeline.push({
-  timeline: [{
-    type: 'survey-multi-choice',
-    preamble: 'Choose the word that has the same meaning as the word in ' +
-    'capital letters. Guess if you are not sure.',
-    questions: shipley_questions
-  }],
-  on_finish: function(data) {
-    var responses = JSON.parse(data.responses);
-    var correctCount = 0;
-    for (var key in responses) {
-      if (responses.hasOwnProperty(key)) {
-          if (responses[key] === shipley_correct[key]) {
-            correctCount ++;
-          }
-      }
-    }
-    jsPsych.data.addProperties({shipley: correctCount});
-  }
-});
+// // Shipley trials NOTE: Commented out for testing
+// var shipley_questions = [
+//   {prompt: 'TALK', options: ['draw', 'eat', 'speak', 'sleep'], required: true, horizontal: true},
+//   {prompt: 'COUCH', options: ['pin', 'eraser', 'sofa', 'glass'], required: true, horizontal: true},
+//   {prompt: 'REMEMBER', options: ['swim', 'recall', 'number', 'plan'], required: true, horizontal: true},
+//   {prompt: 'PARDON', options: ['forgive', 'pound', 'divide', 'crash'], required: true, horizontal: true},
+//   {prompt: 'HIDEOUS', options: ['silvery', 'tilted', 'young', 'dreadful'], required: true, horizontal: true},
+//   {prompt: 'MASSIVE', options: ['bright', 'large', 'speedy', 'low'], required: true, horizontal: true},
+//   {prompt: 'PROBABLE', options: ['likely', 'portable', 'friendly', 'comprehensive'], required: true, horizontal: true},
+//   {prompt: 'IMPOSTER', options: ['conductor', 'officer', 'book', 'pretender'], required: true, horizontal: true},
+//   {prompt: 'FASCINATE', options: ['welcome', 'fix', 'stir', 'enchant'], required: true, horizontal: true},
+//   {prompt: 'EVIDENT', options: ['green', 'obvious', 'skeptical', 'afraid'], required: true, horizontal: true},
+//   {prompt: 'NARRATE', options: ['yield', 'buy', 'associate', 'tell'], required: true, horizontal: true},
+//   {prompt: 'HAUL', options: ['respond', 'twist', 'pull', 'realize'], required: true, horizontal: true},
+//   {prompt: 'HILARITY', options: ['laughter', 'speed', 'grace', 'malice'], required: true, horizontal: true},
+//   {prompt: 'IGNORANT', options: ['red', 'sharp', 'uninformed', 'precise'], required: true, horizontal: true},
+//   {prompt: 'CAPTION', options: ['drum', 'ballast', 'heading', 'ape'], required: true, horizontal: true},
+//   {prompt: 'INDICATE', options: ['defy', 'excite', 'signify', 'bicker'], required: true, horizontal: true},
+//   {prompt: 'SOLEMN', options: ['serious', 'satisfying', 'rough', 'tremendous'], required: true, horizontal: true},
+//   {prompt: 'FORTIFY', options: ['submerge', 'strengthen', 'went', 'deaden'], required: true, horizontal: true},
+//   {prompt: 'MERIT', options: ['deserve', 'distrust', 'fight', 'separate'], required: true, horizontal: true},
+//   {prompt: 'RENOWN', options: ['length', 'head', 'fame', 'loyalty'], required: true, horizontal: true},
+//   {prompt: 'FACILITATE', options: ['turn', 'help', 'strip', 'bewilder'], required: true, horizontal: true},
+//   {prompt: 'AMULET', options: ['charm', 'orphan', 'dingo', 'pond'], required: true, horizontal: true},
+//   {prompt: 'STERILE', options: ['barren', 'illegal', 'helpless', 'tart'], required: true, horizontal: true},
+//   {prompt: 'CORDIAL', options: ['swift', 'muddy', 'leafy', 'affable'], required: true, horizontal: true},
+//   {prompt: 'SQUANDER', options: ['tease', 'belittle', 'slice', 'waste'], required: true, horizontal: true},
+//   {prompt: 'SERRATED', options: ['dried', 'notched', 'armed', 'blunt'], required: true, horizontal: true},
+//   {prompt: 'PLAGIARIZE', options: ['maintain', 'intend', 'revoke', 'pilfer'], required: true, horizontal: true},
+//   {prompt: 'ORIFICE', options: ['brush', 'hole', 'building', 'lute'], required: true, horizontal: true},
+//   {prompt: 'PRISTINE', options: ['vain', 'sound', 'unspoiled', 'level'], required: true, horizontal: true},
+//   {prompt: 'INNOCUOUS', options: ['powerful', 'pure', 'medicinal', 'harmless'], required: true, horizontal: true},
+//   {prompt: 'JOCOSE', options: ['humorous', 'paltry', 'fervid', 'plain'], required: true, horizontal: true},
+//   {prompt: 'RUE', options: ['deal', 'lament', 'dominate', 'cure'], required: true, horizontal: true},
+//   {prompt: 'INEXORABLE', options: ['untidy', 'inviolable', 'relentless', 'sparse'], required: true, horizontal: true},
+//   {prompt: 'DIVEST', options: ['dispossess', 'intrude', 'rally', 'pledge'], required: true, horizontal: true},
+//   {prompt: 'MOLLIFY', options: ['mitigate', 'direct', 'pertain', 'abuse'], required: true, horizontal: true},
+//   {prompt: 'QUERULOUS', options: ['maniacal', 'curious', 'devout', 'complaining'], required: true, horizontal: true},
+//   {prompt: 'ABET', options: ['waken', 'ensue', 'incite', 'placate'], required: true, horizontal: true},
+//   {prompt: 'DESUETUDE', options: ['disuse', 'remonstrance', 'corruption', 'inanity'], required: true, horizontal: true},
+//   {prompt: 'PEREGRINATE', options: ['contemplate', 'mince', 'solidify', 'traverse'], required: true, horizontal: true},
+//   {prompt: 'QUOTIDIAN', options: ['travesty', 'everyday', 'calculation', 'promise'], required: true, horizontal: true}
+// ];
+//
+// var shipley_correct = {
+//   'Q0': 'speak',
+//   'Q1': 'sofa',
+//   'Q2': 'recall',
+//   'Q3': 'forgive',
+//   'Q4': 'dreadful',
+//   'Q5': 'large',
+//   'Q6': 'likely',
+//   'Q7': 'pretender',
+//   'Q8': 'enchant',
+//   'Q9': 'obvious',
+//   'Q10': 'tell',
+//   'Q11': 'pull',
+//   'Q12': 'laughter',
+//   'Q13': 'uninformed',
+//   'Q14': 'heading',
+//   'Q15': 'signify',
+//   'Q16': 'serious',
+//   'Q17': 'strengthen',
+//   'Q18': 'deserve',
+//   'Q19': 'fame',
+//   'Q20': 'help',
+//   'Q21': 'charm',
+//   'Q22': 'barren',
+//   'Q23': 'affable',
+//   'Q24': 'waste',
+//   'Q25': 'notched',
+//   'Q26': 'pilfer',
+//   'Q27': 'hole',
+//   'Q28': 'unspoiled',
+//   'Q29': 'harmless',
+//   'Q30': 'humorous',
+//   'Q31': 'lament',
+//   'Q32': 'relentless',
+//   'Q33': 'dispossess',
+//   'Q34': 'mitigate',
+//   'Q35': 'complaining',
+//   'Q36': 'incite',
+//   'Q37': 'disuse',
+//   'Q38': 'traverse',
+//   'Q39': 'everyday'
+// };
+//
+// // Add Shipley to timeline
+// timeline.push({
+//   timeline: [{
+//     type: 'survey-multi-choice',
+//     preamble: 'Choose the word that has the same meaning as the word in ' +
+//     'capital letters. Guess if you are not sure.',
+//     questions: shipley_questions
+//   }],
+//   on_finish: function(data) {
+//     var responses = JSON.parse(data.responses);
+//     var correctCount = 0;
+//     for (var key in responses) {
+//       if (responses.hasOwnProperty(key)) {
+//           if (responses[key] === shipley_correct[key]) {
+//             correctCount ++;
+//           }
+//       }
+//     }
+//     jsPsych.data.addProperties({shipley: correctCount});
+//   }
+// });
 
 // 15 minute in milliseconds is 900000
 
@@ -355,7 +355,11 @@ timeline.push({
   loop_function: function(data) {
     var fillerStart = jsPsych.data.get().filter({tag: 'timestamp'})
     fillerStart = fillerStart.select('timestamp').values[0]
-    if (jsPsych.totalTime() > fillerStart + 900000) {
+
+    var lastNode = jsPsych.data.getLastTimelineData().select('internal_node_id');
+    lastNode = parseInt(lastNode.values[0].split('-')[2].split('.')[1]);
+
+    if (jsPsych.totalTime() > fillerStart + 900000 ||lastNode > 10) {
       return false;
     } else {
       return true;
