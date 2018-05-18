@@ -334,12 +334,14 @@ timeline.push({
 
 // Add an post example instruction block
 timeline.push({
-  type: 'instructions',
-  pages: ['You are looking for a reversed N on each trial. If you see a' +
-    'reversed N, press the 1 key. If you do not see the reversed N, ' +
-    'press the 5 key. You are to complete 150 trials.'],
-  show_clickable_nav: true,
-  post_trial_gap: 1000,
+  timeline: [{
+    type: 'instructions',
+    pages: ['You are looking for a reversed N on each trial. If you see a' +
+      'reversed N, press the 1 key. If you do not see the reversed N, ' +
+      'press the 5 key. You are to complete 150 trials.'],
+    show_clickable_nav: true,
+    post_trial_gap: 1000
+  }],
   conditional_function: function() {
     var fillerStart = jsPsych.data.get().filter({tag: 'timestamp'});
     fillerStart = fillerStart.select('timestamp').values[0];
@@ -397,12 +399,14 @@ timeline.push({
 });
 
 timeline.push({
-  type: 'instructions',
-  pages: ['You will be shown a grid of boxes with letters. One box will' +
-    'change, press the corresponding letter on your keyboard as quickly as' +
-    ' possible. You are to complete 150 trials.'],
-  show_clickable_nav: true,
-  post_trial_gap: 1000,
+  timeline: [{
+    type: 'instructions',
+    pages: ['You will be shown a grid of boxes with letters. One box will' +
+      'change, press the corresponding letter on your keyboard as quickly as' +
+      ' possible. You are to complete 150 trials.'],
+    show_clickable_nav: true,
+    post_trial_gap: 1000
+  }],
   conditional_function: function() {
     var fillerStart = jsPsych.data.get().filter({tag: 'timestamp'});
     fillerStart = fillerStart.select('timestamp').values[0];
