@@ -510,7 +510,7 @@ var rating = {
   type: 'html-keyboard-response',
   prompt: '<p style="font-size: 30px;">Which face do you like better?</p>',
   stimulus: jsPsych.timelineVariable('ratingString'),
-  choices: [37, 39],
+  choices: [49, 53],
   trial_duration: 100, // NOTE: Lowered for testing, normally 1000
   post_trial_gap: 500,
   data: {
@@ -559,7 +559,7 @@ timeline.push({
 
 timeline.push({
   timeline: [rating],
-  timeline_Variables: [exRatingTrials],
+  timeline_variables: exRatingTrials,
 });
 
 var page9 = 'Make your decisions quickly and with your first impressions. <br>' +
