@@ -524,14 +524,22 @@ var novelFaces = allFaces[Math.abs(allFaces.indexOf(faces) - 1)];
 for (i = 0; i < faces.length; i++) {
   if (i % 2 === 1) { // Target left
     ratingTrials = ratingTrials.concat({ratingString:
-      '<img id="leftImg" src="' + faces[i] + '"/><img id ="rightImg" src="'
+      '<img id="leftImg" src="' + faces[i] + '"/><img id="rightImg" src="'
       + novelFaces[i] + '"/>', target: 'left'});
   } else { // Target right
     ratingTrials = ratingTrials.concat({ratingString:
-      '<img id="leftImg" src="' + novelFaces[i] + '"/><img id ="rightImg" src="'
+      '<img id="leftImg" src="' + novelFaces[i] + '"/><img id="rightImg" src="'
       + faces[i] + '"/>', target: 'right'});
   }
 }
+
+// Build example rating trials
+var exRatingTrials = [
+  {ratingString: '<img id="leftImg" src="Stimulus/33.jpg"/><img id="rightImg" src="Stimulus/37.jpg"/>'},
+  {ratingString: '<img id="leftImg" src="Stimulus/38.jpg"/><img id="rightImg" src="Stimulus/34.jpg"/>'},
+  {ratingString: '<img id="leftImg" src="Stimulus/39.jpg"/><img id="rightImg" src="Stimulus/35.jpg"/>'},
+  {ratingString: '<img id="leftImg" src="Stimulus/36.jpg"/><img id="rightImg" src="Stimulus/40.jpg"/>'}
+];
 
 // Instruction pages
 var page6 = 'You will now be asked which face you like more.<br>';
@@ -547,6 +555,11 @@ timeline.push({
   pages: [page6, page7, page8],
   show_clickable_nav: true,
   post_trial_gap: 1000
+});
+
+timeline.push({
+  timeline: [rating],
+  timeline_Variables: [exRatingTrials],
 });
 
 var page9 = 'Make your decisions quickly and with your first impressions. <br>' +
