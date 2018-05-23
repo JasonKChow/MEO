@@ -332,7 +332,31 @@ var shipley_correct = {
 //   }
 // });
 
-// Add an post example instruction block
+// Completion notice for pushing
+var completed = {
+  timeline: [{
+    type: 'html-keyboard-response',
+    stimulus: 'You have completed this task!',
+    choices: jsPsych.NO_KEYS,
+    trial_duration: 1000,
+    post_trial_gap: 500
+  }],
+  conditional_function: function() {
+    var fillerStart = jsPsych.data.get().filter({tag: 'timestamp'});
+    fillerStart = fillerStart.select('timestamp').values[0];
+
+    if (jsPsych.totalTime() > fillerStart + 900000) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+}
+
+// Push completion notice
+timeline.push(completed);
+
+// Add visual search filler instruction block
 timeline.push({
   timeline: [{
     type: 'instructions',
@@ -398,6 +422,10 @@ timeline.push({
   }
 });
 
+// Push completion notice
+timeline.push(completed);
+
+// Push instructions for serial reaction time filler
 timeline.push({
   timeline: [{
     type: 'instructions',
@@ -473,6 +501,9 @@ timeline.push({
     }
   }
 });
+
+// Push completion notice
+timeline.push(completed);
 
 // Presentation component of rating
 var rating = {
