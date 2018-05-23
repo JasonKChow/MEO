@@ -533,6 +533,34 @@ for (i = 0; i < faces.length; i++) {
   }
 }
 
+// Instruction pages
+var page6 = 'You will now be asked which face you like more.<br>';
+var page7 = 'A pair of faces will be shown to you.<br>' +
+  'Please indicate which face you like more.';
+var page8 = 'Respond with the 1 key if you like the left face more.<br>' +
+  'Respond with the 5 key if you like the right face more.<br>' +
+  'Press next for example trials when you are ready.'
+
+// Add an instruction block for rating
+timeline.push({
+  type: 'instructions',
+  pages: [page6, page7, page8],
+  show_clickable_nav: true,
+  post_trial_gap: 1000
+});
+
+var page9 = 'Make your decisions quickly and with your first impressions. <br>' +
+  'You are limited to 1 second. <br>' +
+  'Press next to begin the real task.'
+
+  // Add an post example instruction block for rating
+  timeline.push({
+    type: 'instructions',
+    pages: [page9],
+    show_clickable_nav: true,
+    post_trial_gap: 1000
+  });
+
 // Add rating trials to timeline
 timeline.push({
   timeline: [rating],
