@@ -310,35 +310,35 @@ var shipley_correct = {
   'Q39': 'everyday'
 };
 
-// Add Shipley to timeline
-timeline.push({
-  timeline: [{
-    type: 'survey-multi-choice',
-    preamble: 'Choose the word that has the same meaning as the word in ' +
-    'capital letters. Guess if you are not sure.',
-    questions: shipley_questions
-  }],
-  on_finish: function(data) {
-    var responses = JSON.parse(data.responses);
-    var correctCount = 0;
-    for (var key in responses) {
-      if (responses.hasOwnProperty(key)) {
-          if (responses[key] === shipley_correct[key]) {
-            correctCount ++;
-          }
-      }
-    }
-    jsPsych.data.addProperties({shipley: correctCount});
-  }
-});
+// Add Shipley to timeline NOTE: Commented out for testing
+// timeline.push({
+//   timeline: [{
+//     type: 'survey-multi-choice',
+//     preamble: 'Choose the word that has the same meaning as the word in ' +
+//     'capital letters. <br>Guess if you are not sure.',
+//     questions: shipley_questions
+//   }],
+//   on_finish: function(data) {
+//     var responses = JSON.parse(data.responses);
+//     var correctCount = 0;
+//     for (var key in responses) {
+//       if (responses.hasOwnProperty(key)) {
+//           if (responses[key] === shipley_correct[key]) {
+//             correctCount ++;
+//           }
+//       }
+//     }
+//     jsPsych.data.addProperties({shipley: correctCount});
+//   }
+// });
 
 // Add an post example instruction block
 timeline.push({
   timeline: [{
     type: 'instructions',
-    pages: ['You are looking for a reversed N on each trial. If you see a' +
-      'reversed N, press the 1 key. If you do not see the reversed N, ' +
-      'press the 5 key. You are to complete 150 trials.'],
+    pages: ['You are looking for a reversed N on each trial. <br>If you see a' +
+      ' reversed N, press the 1 key. <br>If you do not see the reversed N, ' +
+      'press the 5 key. <br>You are to complete 150 trials.'],
     show_clickable_nav: true,
     post_trial_gap: 1000
   }],
@@ -390,7 +390,7 @@ timeline.push({
     var lastNode = jsPsych.data.getLastTimelineData().select('internal_node_id');
     lastNode = parseInt(lastNode.values[0].split('-')[2].split('.')[1]);
 
-    if (jsPsych.totalTime() > fillerStart + 900000 || lastNode >= 149) {
+    if (jsPsych.totalTime() > fillerStart + 900000 || lastNode >= 1) { //NOTE: Changed to 1 for testing, 149
       return false;
     } else {
       return true;
@@ -401,9 +401,9 @@ timeline.push({
 timeline.push({
   timeline: [{
     type: 'instructions',
-    pages: ['You will be shown a grid of boxes with letters. One box will' +
-      'change, press the corresponding letter on your keyboard as quickly as' +
-      ' possible. You are to complete 150 trials.'],
+    pages: ['You will be shown a grid of boxes with letters.<br>One box will ' +
+      'change, press the corresponding letter on your keyboard.<br>Respond as ' +
+      'quickly as possible. <br>You are to complete 150 trials.'],
     show_clickable_nav: true,
     post_trial_gap: 1000
   }],
@@ -466,7 +466,7 @@ timeline.push({
     var lastNode = jsPsych.data.getLastTimelineData().select('internal_node_id');
     lastNode = parseInt(lastNode.values[0].split('-')[2].split('.')[1]);
 
-    if (jsPsych.totalTime() > fillerStart + 900000 || lastNode >= 149) {
+    if (jsPsych.totalTime() > fillerStart + 900000 || lastNode >= 1) { //NOTE: Changed to 1 for testing, 149
       return false;
     } else {
       return true;
