@@ -351,7 +351,7 @@ var completed = {
       return true;
     }
   }
-}
+};
 
 // Push completion notice
 timeline.push(completed);
@@ -568,6 +568,16 @@ timeline.push({
   sample: {
     type: 'without-replacement'
   }
+});
+
+// Push experiment completion notice
+timeline.push({
+  timeline: [{
+    type: 'html-keyboard-response',
+    stimulus: 'You have completed this experiment. <br>Thank you for participating',
+    choices: jsPsych.NO_KEYS,
+    trial_duration: 1000
+  }]
 });
 
 // RUN THE TIMELINE!
